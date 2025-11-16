@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to Words</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        input[type=file] { margin: 20px; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; }
+        button:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Convert Image to Words</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br>
+        <button type="submit">Upload & Convert</button>
+    </form>
+</body>
+</html>
