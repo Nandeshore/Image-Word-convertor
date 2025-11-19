@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Image to Words</title>
-    <style>
-        body { font-family: Arial; text-align: center; margin-top: 50px; }
-        input[type=file] { margin: 20px; }
-        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; }
-        button:hover { background: #45a049; }
-    </style>
+    <title>Image to Text</title>
+    <link rel="stylesheet" href="static/style.css">
 </head>
-<body>
-    <h1>Convert Image to Words</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <br>
-        <button type="submit">Upload & Convert</button>
-    </form>
+
+<body class="light">
+    <main style="position: relative;">
+        <h1>Image to Text Converter</h1>
+
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <label class="drop" id="drop-area">
+                <input type="file" id="fileElem" name="image" />
+                <div>
+                    <h3>📄 Drop your image here or click to upload</h3>
+                </div>
+            </label>
+
+            <div style="position: relative; display: inline-block;">
+                <button id="convertBtn" class="btn1" type="submit" disabled>Convert</button>
+                <div id="notification" class="notification"></div>
+            </div>
+
+            <div id="progressContainer" class="progress-bar" style="display:none;">
+                <div id="progressBar" class="progress">0%</div>
+            </div>
+        </form>
+
+        {% if text %}
+        <h2>Extracted Text:</h2>
+        <pre>{{ text }}</pre>
+        {% endif %}
+
+        <section id="result" class="result" style="display:none;">
+            <h2>Extracted text</h2>
+            <textarea id="extractedText" readonly></textarea>
+            <div class="result-actions">
+                <button id="copyBtn" type="button">Copy</button>
+                <button id="clearBtn" type="button">Clear</button>
+            </div>
+        </section>
+
+        <script src="static/script.js"></script>
+    </main>
 </body>
+
 </html>
